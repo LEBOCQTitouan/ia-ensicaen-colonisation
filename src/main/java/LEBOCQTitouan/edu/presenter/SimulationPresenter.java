@@ -11,4 +11,9 @@ public class SimulationPresenter {
         this.appWindow = appWindow;
         this.sequencer = sequencer;
     }
+
+    public void start() {
+        appWindow.setPresenter(this);
+        appWindow.setVisible(true);
+    }
 }

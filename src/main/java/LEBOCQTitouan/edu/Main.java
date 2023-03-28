@@ -9,5 +9,7 @@ public class Main {
         AppWindow appWindow = new AppWindow();
         Sequencer sequencer = new Sequencer();
         SimulationPresenter simulationPresenter = new SimulationPresenter(appWindow, sequencer);
+
+        simulationPresenter.start();
     }
 }
