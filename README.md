@@ -108,6 +108,7 @@ Please refer to the following sections for more information about the project de
 ### Setup of the project
 
 - [x] [Issue : Redacting readme](https://github.com/LEBOCQTitouan/ia-ensicaen-colonisation/issues/24)
+- [x] [Issue : Implementing changelog](https://github.com/LEBOCQTitouan/ia-ensicaen-colonisation/issues/27)
 
 ### Basic simulation with no agent logic implementation
 
