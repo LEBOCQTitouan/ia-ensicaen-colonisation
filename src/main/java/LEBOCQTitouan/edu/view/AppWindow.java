@@ -1,23 +1,47 @@
 package LEBOCQTitouan.edu.view;
 
 import LEBOCQTitouan.edu.presenter.SimulationPresenter;
+import LEBOCQTitouan.edu.view.ui.Canvas;
+import LEBOCQTitouan.edu.view.ui.StatHolder;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class AppWindow extends JFrame {
     private SimulationPresenter presenter;
+    private StatHolder statHolder;
+    private Canvas canvas;
     private void initContent() {
         JPanel panel = new JPanel();
-        panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
-        JButton button = new JButton("Test callback");
-        button.addActionListener(e -> {
-            if (presenter != null) {
-                // TODO
-                System.out.println("Test callback");
-            }
+        statHolder = new StatHolder();
+        canvas = new Canvas();
+
+        JButton stepButton = new JButton("Step");
+        stepButton.addActionListener(e -> {
+            // TODO step simulation
         });
-        panel.add(button);
+
+        c.gridx = 0;
+        c.gridy = 0;
+        c.weightx = 1;
+        c.weighty = 1;
+
+        JPanel componentHolder = new JPanel();
+        componentHolder.setLayout(new BoxLayout(componentHolder, BoxLayout.Y_AXIS));
+        componentHolder.add(statHolder);
+        componentHolder.add(stepButton);
+
+        c.fill = GridBagConstraints.NONE;
+        c.anchor = GridBagConstraints.NORTHWEST;
+        panel.add(componentHolder, c);
+        c.fill = GridBagConstraints.BOTH;
+        c.insets = new Insets(10, 10, 10, 10);
+        panel.add(canvas, c);
+
+        panel.setBackground(Color.RED);
 
         this.setContentPane(panel);
     }
