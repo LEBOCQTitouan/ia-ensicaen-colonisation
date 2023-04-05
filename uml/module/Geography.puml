@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+Class Coordinate {}
+Class Robot {}
+Class RobotMapper {
+    + robotCoordinateHashMap: HashMap<Robot, Coordinate>
+    + getCoordinate(robot: Robot): Coordinate
+}
+
+RobotMapper --> Robot
+RobotMapper --> Coordinate
+
+@enduml
