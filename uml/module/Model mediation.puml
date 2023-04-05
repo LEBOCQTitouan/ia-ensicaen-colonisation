@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram'
+
+Class InterMediator {
+    makeStep() : void
+}
+
+Class Planet {}
+
+Class Robot {}
+
+Class RobotMapper {}
+
+Class ShockWave {}
+
+Class Sequencer {}
+
+Sequencer *- InterMediator : modelMediator
+
+InterMediator o-- RobotMapper : robotMapper
+InterMediator o-- "1..*" Robot : robots
+InterMediator o-- Planet : planet
+InterMediator o-- "1..*" ShockWave : shockWaves
+
+RobotMapper -> Robot
+
+@enduml
