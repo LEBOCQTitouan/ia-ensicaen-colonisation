@@ -1,6 +1,6 @@
 package LEBOCQTitouan.edu;
 
-import LEBOCQTitouan.edu.model.Sequencer;
+import LEBOCQTitouan.edu.model.drivers.Sequencer;
 import LEBOCQTitouan.edu.presenter.SimulationPresenter;
 import LEBOCQTitouan.edu.view.AppWindow;
 

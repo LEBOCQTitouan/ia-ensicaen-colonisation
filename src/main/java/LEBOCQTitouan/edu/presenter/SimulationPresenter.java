@@ -1,6 +1,6 @@
 package LEBOCQTitouan.edu.presenter;
 
-import LEBOCQTitouan.edu.model.Sequencer;
+import LEBOCQTitouan.edu.model.drivers.Sequencer;
 import LEBOCQTitouan.edu.view.AppWindow;
 
 public class SimulationPresenter {
