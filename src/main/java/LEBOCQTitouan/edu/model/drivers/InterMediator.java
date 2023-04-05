@@ -1,6 +1,6 @@
 package LEBOCQTitouan.edu.model.drivers;
 
-import LEBOCQTitouan.edu.model.entities.Planet;
+import LEBOCQTitouan.edu.model.entities.planet.Planet;
 import LEBOCQTitouan.edu.model.entities.Robot;
 import LEBOCQTitouan.edu.model.entities.Shockwave;
 import LEBOCQTitouan.edu.model.geography.RobotMapper;

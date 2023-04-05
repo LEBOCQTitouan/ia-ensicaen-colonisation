@@ -11,4 +11,9 @@ Class RobotMapper {
 RobotMapper --> Robot
 RobotMapper --> Coordinate
 
+Class Planet {}
+Class Cell {}
+
+Planet *-- "0..*" Cell : List[List[Cell]]
+
 @enduml
