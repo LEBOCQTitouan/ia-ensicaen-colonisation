@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class RobotCommandFactory {}
+class ShockWaveCommandFactory {}
+class PlanetCommandFactory {}
+
+class Planet {}
+class Robot {}
+class ShockWave {}
+
+Planet o--> PlanetCommandFactory
+Robot o--> RobotCommandFactory
+ShockWave o--> ShockWaveCommandFactory
+
+@enduml

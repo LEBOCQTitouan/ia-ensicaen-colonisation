@@ -1,0 +1,47 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package factories {
+        class RobotCommandFactory {
+            -planet: Planet
+            -robotMapper: RobotMapper
+            +createMoveRobotCommand(robot: Robot, direction: Direction): MoveRobotCommand
+            +createConstructPipeCommand(robot: Robot): ConstructPipeCommand
+            +createCultivateCommand(robot: Robot): CultivateCommand
+            +createExtractOreCommand(robot: Robot): ExtractOreCommand
+            +createExtractFoodCommand(robot: Robot): ExtractFoodCommand
+        }
+
+        class ShockWaveCommandFactory {
+            -planet: Planet
+            +createPropagationShockWaveCommand(shockWave: ShockWave): PropagationShockWaveCommand
+        }
+
+        class PlanetCommandFactory {
+            -planet: Planet
+            -robotMapper: RobotMapper
+            +createMutationCommand(localisation: Coordinate): MutatePlanetCommand
+        }
+
+        enum RobotCommandType {
+            MOVE
+            CONSTRUCT_PIPE
+            CULTIVATE
+            EXTRACT_ORE
+            EXTRACT_FOOD
+        }
+
+        enum ShockWaveCommandType {
+            PROPAGATION
+        }
+
+        enum PlanetCommandType {
+            MUTATE
+        }
+
+        RobotCommandFactory --> RobotCommandType
+        ShockWaveCommandFactory --> ShockWaveCommandType
+        PlanetCommandFactory --> PlanetCommandType
+    }
+
+@enduml
