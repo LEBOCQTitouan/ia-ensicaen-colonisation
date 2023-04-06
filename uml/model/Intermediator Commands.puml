@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class InterMediator {
+    -robotMapper: RobotMapper
+    -robots: Robot[]
+    -planet: Planet
+    -shockWaves: ShockWave[]
+    -commands: InterMediatorCommand[]
+    +executeCommands()
+}
+
+
+package Commands {
+    InterMediatorCommand o-> InterMediator
+
+    abstract class InterMediatorCommand {
+        +execute()
+    }
+
+    package RobotCommands {
+        abstract class RobotCommand extends InterMediatorCommand {
+            -planet: Planet
+            -robot: Robot
+            -robotMapper: RobotMapper
+        }
+
+        class MoveRobotCommand extends RobotCommand {
+            -direction: Direction
+        }
+
+        class ConstructPipeCommand extends RobotCommand {}
+        class CultivateCommand extends RobotCommand {}
+
+        abstract class ExtractCommand extends RobotCommand {}
+
+        class ExtractOreCommand extends ExtractCommand {}
+        class ExtractFoodCommand extends ExtractCommand {}
+    }
+
+    package shockWaveCommands {
+        class PropagationShockWaveCommand extends InterMediatorCommand {
+            -shockWave: ShockWave
+            -Planet: Planet
+        }
+    }
+
+    package PlanetCommands {
+        class MutatePlanetCommand extends InterMediatorCommand {
+            -planet: Planet
+            -localisation: Coordinate
+            -robotMapper: RobotMapper
+        }
+    }
+}
+
+@enduml
