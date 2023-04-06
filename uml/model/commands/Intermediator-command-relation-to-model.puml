@@ -1,6 +1,23 @@
 @startuml
 'https://plantuml.com/class-diagram
 
+class InterMediator {
+    computeCommands()
+}
+class InterMediatorCommand {
+    +execute()
+}
+
+InterMediator o--> Planet
+InterMediator o--> "0..*" Robot : robots
+InterMediator o--> ShockWave
+
+InterMediator *-> "0..*" InterMediatorCommand : commands
+
+RobotCommandFactory ---> InterMediatorCommand
+ShockWaveCommandFactory ---> InterMediatorCommand
+PlanetCommandFactory ---> InterMediatorCommand
+
 class RobotCommandFactory {}
 class ShockWaveCommandFactory {}
 class PlanetCommandFactory {}
