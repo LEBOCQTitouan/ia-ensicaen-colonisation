@@ -39,18 +39,22 @@ package Commands {
     }
 
     package shockWaveCommands {
-        class PropagationShockWaveCommand extends InterMediatorCommand {
+        abstract class ShockWaveCommand extends InterMediatorCommand {
             -shockWave: ShockWave
-            -Planet: Planet
+            -planet: Planet
         }
+
+        class PropagationShockWaveCommand extends ShockWaveCommand {}
     }
 
     package PlanetCommands {
-        class MutatePlanetCommand extends InterMediatorCommand {
+        abstract class PlanetCommand extends InterMediatorCommand {
             -planet: Planet
             -localisation: Coordinate
             -robotMapper: RobotMapper
         }
+
+        class MutatePlanetCommand extends PlanetCommand {}
     }
 }
 

@@ -2,19 +2,23 @@
 'https://plantuml.com/class-diagram
 
 package factories {
+        abstract class RobotCommand {}
+        abstract class ShockWaveCommand {}
+        abstract class PlanetCommand {}
+
+        RobotCommandFactory --> RobotCommand
+        PlanetCommandFactory --> PlanetCommand
+        ShockWaveCommandFactory --> ShockWaveCommand
+
         class RobotCommandFactory {
             -planet: Planet
             -robotMapper: RobotMapper
-            +createMoveRobotCommand(robot: Robot, direction: Direction): MoveRobotCommand
-            +createConstructPipeCommand(robot: Robot): ConstructPipeCommand
-            +createCultivateCommand(robot: Robot): CultivateCommand
-            +createExtractOreCommand(robot: Robot): ExtractOreCommand
-            +createExtractFoodCommand(robot: Robot): ExtractFoodCommand
+            +createRobotCommand(robotCommandType: RobotCommandType, robot: Robot): RobotCommand
         }
 
         class ShockWaveCommandFactory {
             -planet: Planet
-            +createPropagationShockWaveCommand(shockWave: ShockWave): PropagationShockWaveCommand
+            +createPropagationShockWaveCommand(shockWave: ShockWave): ShockWaveCommand
         }
 
         class PlanetCommandFactory {
