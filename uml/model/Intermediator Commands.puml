@@ -52,6 +52,30 @@ package Commands {
             -robotMapper: RobotMapper
         }
     }
+
+    package factories {
+        interface CommandFactory {}
+
+        class RobotCommandFactory extends CommandFactory {}
+        class ShockWaveCommandFactory extends CommandFactory {}
+        class PlanetCommandFactory extends CommandFactory {}
+
+        enum RobotCommandType {
+            MOVE
+            CONSTRUCT_PIPE
+            CULTIVATE
+            EXTRACT_ORE
+            EXTRACT_FOOD
+        }
+
+        enum ShockWaveCommandType {
+            PROPAGATION
+        }
+
+        enum PlanetCommandType {
+            MUTATE
+        }
+    }
 }
 
 @enduml
