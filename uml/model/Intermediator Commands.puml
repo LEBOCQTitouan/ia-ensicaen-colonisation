@@ -12,11 +12,11 @@ class InterMediator {
 
 
 package Commands {
-    InterMediatorCommand o-> InterMediator
-
     abstract class InterMediatorCommand {
         +execute()
     }
+
+    InterMediator -> InterMediatorCommand
 
     package RobotCommands {
         abstract class RobotCommand extends InterMediatorCommand {
@@ -54,11 +54,26 @@ package Commands {
     }
 
     package factories {
-        interface CommandFactory {}
+        class RobotCommandFactory {
+            -planet: Planet
+            -robotMapper: RobotMapper
+            +createMoveRobotCommand(robot: Robot, direction: Direction): MoveRobotCommand
+            +createConstructPipeCommand(robot: Robot): ConstructPipeCommand
+            +createCultivateCommand(robot: Robot): CultivateCommand
+            +createExtractOreCommand(robot: Robot): ExtractOreCommand
+            +createExtractFoodCommand(robot: Robot): ExtractFoodCommand
+        }
 
-        class RobotCommandFactory extends CommandFactory {}
-        class ShockWaveCommandFactory extends CommandFactory {}
-        class PlanetCommandFactory extends CommandFactory {}
+        class ShockWaveCommandFactory {
+            -planet: Planet
+            +createPropagationShockWaveCommand(shockWave: ShockWave): PropagationShockWaveCommand
+        }
+
+        class PlanetCommandFactory {
+            -planet: Planet
+            -robotMapper: RobotMapper
+            +createMutationCommand(localisation: Coordinate): MutatePlanetCommand
+        }
 
         enum RobotCommandType {
             MOVE
@@ -75,6 +90,10 @@ package Commands {
         enum PlanetCommandType {
             MUTATE
         }
+
+        RobotCommandFactory --> RobotCommandType
+        ShockWaveCommandFactory --> ShockWaveCommandType
+        PlanetCommandFactory --> PlanetCommandType
     }
 }
 
