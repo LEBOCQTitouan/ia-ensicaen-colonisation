@@ -5,14 +5,29 @@ autonumber
 
 participant Sequencer
 participant InterMediator
+participant Shockwave
+participant Planet
+participant Robot
 
-Sequencer -> InterMediator: Shockwave turn
-InterMediator -> Sequencer: response to shockwave turn
+loop until age limit
+    Sequencer -> InterMediator: Shockwave turn
+        loop for all shockwaves
+            InterMediator -> Shockwave: propagate
+            Shockwave -> InterMediator: propagation result
+        end
+    InterMediator -> Sequencer: response to shockwave turn
 
-Sequencer -> InterMediator: Planet turn
-InterMediator -> Sequencer: response to planet turn
+    Sequencer -> InterMediator: Planet turn
+    InterMediator -> Planet: react
+    Planet -> InterMediator: reaction result
+    InterMediator -> Sequencer: response to planet turn
 
-Sequencer -> InterMediator: Robot turn
-InterMediator -> Sequencer: response to robot turn
+    Sequencer -> InterMediator: Robot turn
+        loop for all robots
+            InterMediator -> Robot: compute
+            Robot -> InterMediator: computation result
+        end
+    InterMediator -> Sequencer: response to robot turn
+end
 
 @enduml
