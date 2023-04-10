@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Sequencer
+participant InterMediator
+
+Sequencer -> InterMediator: Shockwave turn
+InterMediator -> Sequencer: response to shockwave turn
+
+Sequencer -> InterMediator: Planet turn
+InterMediator -> Sequencer: response to planet turn
+
+Sequencer -> InterMediator: Robot turn
+InterMediator -> Sequencer: response to robot turn
+
+@enduml
