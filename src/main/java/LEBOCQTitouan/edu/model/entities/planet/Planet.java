@@ -1,5 +1,10 @@
 package LEBOCQTitouan.edu.model.entities.planet;
 
+import LEBOCQTitouan.edu.model.commands.InterMediatorCommand;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Planet {
     private final int width;
     private final int height;
@@ -15,5 +20,10 @@ public class Planet {
                 this.cells[i][j] = new Cell();
             }
         }
+    }
+
+    public List<InterMediatorCommand> react() {
+        ArrayList<InterMediatorCommand> generatedCommands = new ArrayList<>();
+        return generatedCommands;
     }
 }
