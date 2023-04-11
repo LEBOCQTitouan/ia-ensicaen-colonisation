@@ -12,4 +12,9 @@ public abstract class ShockwaveCommand implements InterMediatorCommand {
     public void execute() {
         // TODO Auto-generated method stub need to remove and implement in each child classes
     }
+
+    @Override
+    public void updateSimulationMetrics() {
+        // TODO Auto-generated method stub need to remove and implement in each child classes
+    }
 }

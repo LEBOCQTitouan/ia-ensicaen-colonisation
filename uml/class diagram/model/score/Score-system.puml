@@ -30,7 +30,7 @@ end note
 
 class Metric {
     +String name
-    +String value
+    +double value
 }
 class SimulationMetricManager {
     +Metric oreExtractionMetric
