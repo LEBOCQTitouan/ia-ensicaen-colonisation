@@ -24,7 +24,8 @@ Robot -> ConcreteIntermediatorCommand
 
 IntermediatorCommand <|--- ConcreteIntermediatorCommand
 note right of ConcreteIntermediatorCommand
-    Here can be implemented any command instances
+    Here can be implemented
+    any command instances
 end note
 
 class Metric {
