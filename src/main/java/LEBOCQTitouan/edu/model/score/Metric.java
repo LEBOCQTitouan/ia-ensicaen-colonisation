@@ -1,16 +1,16 @@
 package LEBOCQTitouan.edu.model.score;
 
 public class Metric {
-    private final String name;
+    private final MetricType type;
     private double value;
 
-    public Metric(String name, double value) {
-        this.name = name;
+    public Metric(MetricType type, double value) {
+        this.type = type;
         this.value = value;
     }
 
-    public String getName() {
-        return name;
+    public MetricType getType() {
+        return type;
     }
 
     public double getValue() {

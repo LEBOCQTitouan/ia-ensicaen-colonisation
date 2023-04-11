@@ -29,7 +29,6 @@ note right of ConcreteIntermediatorCommand
 end note
 
 class Metric {
-    +String name
     +double value
 }
 class SimulationMetricManager {
@@ -37,6 +36,13 @@ class SimulationMetricManager {
     +Metric foodExtractionMetric
     +Metric waterExtractionMetric
 }
+enum MetricType {
+    ORE_EXTRACTION
+    FOOD_EXTRACTION
+    WATER_EXTRACTION
+}
+
+Metric *--> MetricType
 
 ConcreteIntermediatorCommand o--> SimulationMetricManager
 SimulationMetricManager -> Metric

@@ -6,8 +6,8 @@ public class SimulationMetricManager {
     private final Metric waterExtractionMetric;
 
     public SimulationMetricManager() {
-        this.oreExtractionMetric = new Metric("Ore Extraction", 0);
-        this.foodExtractionMetric = new Metric("Food Extraction", 0);
-        this.waterExtractionMetric = new Metric("Water Extraction", 0);
+        this.oreExtractionMetric = new Metric(MetricType.ORE_EXTRACTION, 0);
+        this.foodExtractionMetric = new Metric(MetricType.FOOD_EXTRACTION, 0);
+        this.waterExtractionMetric = new Metric(MetricType.WATER_EXTRACTION, 0);
     }
 }
