@@ -1,0 +1,46 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Sequencer
+
+class Intermediator
+class Planet
+class Robot
+
+interface IntermediatorCommand {
+    +updateSimulationMetrics()
+    +execute()
+}
+class ConcreteIntermediatorCommand
+
+Intermediator -> IntermediatorCommand
+Intermediator o-> Planet
+Intermediator o-> Robot
+
+ConcreteIntermediatorCommand o--> Intermediator
+
+Planet -> ConcreteIntermediatorCommand
+Robot -> ConcreteIntermediatorCommand
+
+IntermediatorCommand <|--- ConcreteIntermediatorCommand
+note right of ConcreteIntermediatorCommand
+    Here can be implemented any command instances
+end note
+
+class Metric {
+    +String name
+    +String value
+}
+class SimulationMetricManager {
+    +Metric oreExtractionMetric
+    +Metric foodExtractionMetric
+    +Metric waterExtractionMetric
+}
+
+ConcreteIntermediatorCommand o--> SimulationMetricManager
+SimulationMetricManager -> Metric
+
+Sequencer o--> SimulationMetricManager
+Sequencer o--> Intermediator
+
+@enduml
