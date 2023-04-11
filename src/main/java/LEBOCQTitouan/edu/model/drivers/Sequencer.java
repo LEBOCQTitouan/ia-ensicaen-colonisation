@@ -32,4 +32,8 @@ public class Sequencer {
             command.execute();
         }
     }
+
+    public SimulationMetricManager getMetricManager() {
+        return metricManager;
+    }
 }

@@ -10,4 +10,16 @@ public class SimulationMetricManager {
         this.foodExtractionMetric = new Metric(MetricType.FOOD_EXTRACTION, 0);
         this.waterExtractionMetric = new Metric(MetricType.WATER_EXTRACTION, 0);
     }
+
+    public Metric getOreExtractionMetric() {
+        return oreExtractionMetric;
+    }
+
+    public Metric getFoodExtractionMetric() {
+        return foodExtractionMetric;
+    }
+
+    public Metric getWaterExtractionMetric() {
+        return waterExtractionMetric;
+    }
 }

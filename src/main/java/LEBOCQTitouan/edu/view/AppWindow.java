@@ -1,5 +1,6 @@
 package LEBOCQTitouan.edu.view;
 
+import LEBOCQTitouan.edu.model.score.Metric;
 import LEBOCQTitouan.edu.presenter.SimulationPresenter;
 import LEBOCQTitouan.edu.view.ui.Canvas;
 import LEBOCQTitouan.edu.view.ui.StatHolder;
@@ -20,9 +21,7 @@ public class AppWindow extends JFrame {
         canvas = new Canvas();
 
         JButton stepButton = new JButton("Step");
-        stepButton.addActionListener(e -> {
-            // TODO step simulation
-        });
+        stepButton.addActionListener(e -> presenter.step());
 
         c.gridx = 0;
         c.gridy = 0;
@@ -58,5 +57,13 @@ public class AppWindow extends JFrame {
 
     public void setPresenter(SimulationPresenter presenter) {
         this.presenter = presenter;
+    }
+
+    public void setScore(Metric metric) {
+        switch (metric.getType()) {
+            case ORE_EXTRACTION -> statHolder.updateOreStock(metric.getValue());
+            case FOOD_EXTRACTION -> statHolder.updateFoodStock(metric.getValue());
+            case WATER_EXTRACTION -> statHolder.updateWaterStock(metric.getValue());
+        }
     }
 }

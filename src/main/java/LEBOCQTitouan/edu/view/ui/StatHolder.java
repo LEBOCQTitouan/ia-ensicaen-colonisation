@@ -52,4 +52,16 @@ public class StatHolder extends JPanel {
     public StatHolder() {
         initContent();
     }
+
+    public void updateOreStock(double value) {
+        oreStockLabel.setText("Ore stock: " + value);
+    }
+
+    public void updateFoodStock(double value) {
+        foodStockLabel.setText("Food stock: " + value);
+    }
+
+    public void updateWaterStock(double value) {
+        WaterStockLabel.setText("Water stock: " + value);
+    }
 }
