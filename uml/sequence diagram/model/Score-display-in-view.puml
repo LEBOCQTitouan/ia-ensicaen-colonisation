@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+' control
+participant SimulationPresenter
+' model
+participant Sequencer
+participant SimulationMetricManager
+' view
+participant AppWindow
+participant StatHolder
+
+AppWindow -> SimulationPresenter ++ : step()
+SimulationPresenter -> Sequencer ++ : getSimulationMetricManager()
+SimulationPresenter <- Sequencer -- : return : SimulationMetricManager
+loop for each metric displayed in score
+    SimulationPresenter -> SimulationMetricManager ++ : getMetric()
+    SimulationPresenter <- SimulationMetricManager -- : return : Metric
+    SimulationPresenter -> AppWindow ++ : setScore(Metric)
+    AppWindow -> StatHolder ++ : update[name of score](double)
+    AppWindow <- StatHolder -- : return
+    SimulationPresenter <- AppWindow -- : return
+end loop
+AppWindow <- SimulationPresenter -- : return
+
+@enduml

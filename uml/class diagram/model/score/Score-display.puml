@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+' model
+class Sequencer {
+    + SimulationMetricManager getSimulationMetricManager()
+}
+class SimulationMetricManager {
+    + Metric getOreExtractionMetric()
+    + Metric getFoodExtractionMetric()
+    + Metric getWaterExtractionMetric()
+}
+' presenter
+class SimulationPresenter {
+    + void step()
+}
+' view
+class AppWindow {
+    + void setScore(Metric metric)
+}
+class StatHolder {
+    + void updateOreStock(double value)
+    + void updateFoodStock(double value)
+    + void updateWaterStock(double value)
+}
+
+SimulationPresenter *--> AppWindow
+SimulationPresenter *--> Sequencer
+
+StatHolder <-* AppWindow
+
+Sequencer *-> SimulationMetricManager
+
+@enduml
