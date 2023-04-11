@@ -41,7 +41,7 @@ class SimulationMetricManager {
 ConcreteIntermediatorCommand o--> SimulationMetricManager
 SimulationMetricManager -> Metric
 
-Sequencer o--> SimulationMetricManager
+Sequencer *--> SimulationMetricManager
 Sequencer o--> Intermediator
 
 @enduml
