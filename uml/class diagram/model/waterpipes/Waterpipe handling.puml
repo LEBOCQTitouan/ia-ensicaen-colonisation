@@ -4,7 +4,17 @@
 class InterMediator
 
 class Waterpipe
-class WaterpipeHandler
+class WaterpipeHandler {
+    {static} - instance: WaterpipeHandler
+    {static} + getInstance(): WaterpipeHandler
+    -waterpipes: Waterpipe[]
+}
+
+note left of WaterpipeHandler
+    Singleton for the whole
+    Waterpipe system
+end note
+
 abstract class WaterPipeCommand extends InterMediatorCommand {
     -waterPipe: WaterpipeHandler
     -planet: Planet
@@ -21,7 +31,7 @@ InterMediator .> InterMediatorCommand
 
 InterMediator o--> "1..*" Robot : robots
 InterMediator o--> Planet : planet
-InterMediator o--> WaterpipeHandler : waterpipeHandler
+WaterPipeCommand o--> WaterpipeHandler : waterpipeHandler
 
 Planet *--> "1..*" Cell : cells
 Cell *-> Waterpipe : waterpipe
