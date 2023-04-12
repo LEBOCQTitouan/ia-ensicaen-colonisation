@@ -5,10 +5,12 @@ package factories {
         abstract class RobotCommand {}
         abstract class ShockWaveCommand {}
         abstract class PlanetCommand {}
+        abstract class WaterpipeCommand {}
 
         RobotCommandFactory --> RobotCommand
         PlanetCommandFactory --> PlanetCommand
         ShockWaveCommandFactory --> ShockWaveCommand
+        WaterpipeCommandFactory --> WaterpipeCommand
 
         class RobotCommandFactory {
             -planet: Planet
@@ -27,6 +29,12 @@ package factories {
             +createMutationCommand(localisation: Coordinate): MutatePlanetCommand
         }
 
+        class WaterpipeCommandFactory {
+            -planet: Planet
+            -waterpipeHandler: WaterpipeHandler
+            +createWaterpipeCommand(localisation: Coordinate): WaterpipeCommand
+        }
+
         enum RobotCommandType {
             MOVE
             CONSTRUCT_PIPE
@@ -43,9 +51,14 @@ package factories {
             MUTATE
         }
 
+        enum WaterpipeCommandType {
+            EXTRACT_WATER
+        }
+
         RobotCommandFactory --> RobotCommandType
         ShockWaveCommandFactory --> ShockWaveCommandType
         PlanetCommandFactory --> PlanetCommandType
+        WaterpipeCommandFactory --> WaterpipeCommandType
     }
 
 @enduml

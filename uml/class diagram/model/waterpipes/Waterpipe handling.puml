@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class InterMediator
+
+class Waterpipe
+class WaterpipeHandler
+abstract class WaterPipeCommand extends InterMediatorCommand {
+    -waterPipe: WaterpipeHandler
+    -planet: Planet
+}
+class WaterPipeCommandFactory
+
+class Robot
+class Planet
+class Cell
+
+Robot -> WaterPipeCommandFactory
+WaterPipeCommandFactory .> WaterPipeCommand
+InterMediator .> InterMediatorCommand
+
+InterMediator o--> "1..*" Robot : robots
+InterMediator o--> Planet : planet
+InterMediator o--> WaterpipeHandler : waterpipeHandler
+
+Planet *--> "1..*" Cell : cells
+Cell *-> Waterpipe : waterpipe
+Waterpipe *-> Cell : cell
+
+WaterpipeHandler o--> Waterpipe : waterpipes
+
+@enduml

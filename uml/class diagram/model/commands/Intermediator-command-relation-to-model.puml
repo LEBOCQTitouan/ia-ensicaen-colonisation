@@ -14,11 +14,13 @@ InterMediator o--> ShockWave
 
 InterMediator *-> "0..*" InterMediatorCommand : commands
 
-RobotCommandFactory ---> InterMediatorCommand
-ShockWaveCommandFactory ---> InterMediatorCommand
-PlanetCommandFactory ---> InterMediatorCommand
+RobotCommandFactory ..> InterMediatorCommand
+ShockWaveCommandFactory ..> InterMediatorCommand
+PlanetCommandFactory ..> InterMediatorCommand
+WaterpipeCommandFactory ..> InterMediatorCommand
 
 class RobotCommandFactory {}
+class WaterpipeCommandFactory {}
 class ShockWaveCommandFactory {}
 class PlanetCommandFactory {}
 
@@ -28,6 +30,7 @@ class ShockWave {}
 
 Planet o--> PlanetCommandFactory
 Robot o--> RobotCommandFactory
+Robot o--> WaterpipeCommandFactory
 ShockWave o--> ShockWaveCommandFactory
 
 @enduml

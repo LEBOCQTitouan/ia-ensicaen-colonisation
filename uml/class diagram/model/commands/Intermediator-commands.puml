@@ -16,7 +16,7 @@ package Commands {
         +execute()
     }
 
-    InterMediator -> InterMediatorCommand
+    InterMediator .> InterMediatorCommand
 
     package RobotCommands {
         abstract class RobotCommand extends InterMediatorCommand {
@@ -55,6 +55,15 @@ package Commands {
         }
 
         class MutatePlanetCommand extends PlanetCommand {}
+    }
+
+    package WaterPipeCommands {
+        abstract class WaterPipeCommand extends InterMediatorCommand {
+            -waterPipe: WaterpipeHandler
+            -planet: Planet
+        }
+
+        class ExtractFromPipes extends WaterPipeCommand {}
     }
 }
 
