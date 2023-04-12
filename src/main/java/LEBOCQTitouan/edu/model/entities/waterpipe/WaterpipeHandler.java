@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WaterpipeHandler {
-    private WaterpipeHandler instance;
+    private static WaterpipeHandler instance;
     private List<Waterpipe> waterpipes;
 
     private WaterpipeHandler() {
         this.waterpipes = new ArrayList<>();
     }
 
-    public WaterpipeHandler getInstance() {
+    public static WaterpipeHandler getInstance() {
         if (instance == null) {
             instance = new WaterpipeHandler();
         }

@@ -5,5 +5,5 @@ import LEBOCQTitouan.edu.model.entities.waterpipe.WaterpipeHandler;
 
 public class WaterpipeCommandFactory {
     private Planet planet;
-    private WaterpipeHandler waterpipeHandler;
+    private WaterpipeHandler waterpipeHandler = WaterpipeHandler.getInstance();
 }
