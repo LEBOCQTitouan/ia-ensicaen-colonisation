@@ -1,4 +1,4 @@
-package LEBOCQTitouan.edu.model.entities;
+package LEBOCQTitouan.edu.model.entities.waterpipe;
 
 import LEBOCQTitouan.edu.model.entities.planet.Cell;
 

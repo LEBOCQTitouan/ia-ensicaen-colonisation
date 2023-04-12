@@ -1,6 +1,6 @@
 package LEBOCQTitouan.edu.model.entities.planet;
 
-import LEBOCQTitouan.edu.model.entities.Waterpipe;
+import LEBOCQTitouan.edu.model.entities.waterpipe.Waterpipe;
 import LEBOCQTitouan.edu.model.geography.Direction;
 
 import java.util.HashMap;
