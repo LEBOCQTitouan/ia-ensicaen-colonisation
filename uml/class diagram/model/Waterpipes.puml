@@ -2,11 +2,14 @@
 'https://plantuml.com/class-diagram
 
 class InterMediator
-class Planet
+class Planet {
+    - initNeighbors(): void
+}
 class Cell {
     + HashMap<Direction, Cell> neighbors
-    + putWaterpipe(): void
-    + hasPipe(): boolean
+    + createWaterpipe(): void
+    + getNeighbors(): HashMap<Direction, Cell>
+    + addNeighbor(Direction direction, Cell cell): void
 }
 
 class Waterpipe
@@ -22,8 +25,8 @@ enum Direction {
     EAST,
     WEST
 
-    + int offsetx
-    + int offsety
+    + int offsetX
+    + int offsetY
 }
 note bottom of Direction
     NORTH(0, -1)
