@@ -1,0 +1,43 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+interface DisplayableComponent {
+    + void display(Graphics g)
+}
+
+class CellView {
+    {static} + int size
+    + x : int
+    + y : int
+    + void display(Graphics g)
+}
+note right of CellView
+    Base component
+    void display(Graphics g)
+    {
+        // set color ...
+        // draw shape ...
+    }
+end note
+CellView --|> DisplayableComponent
+
+abstract class CellViewDecorator implements DisplayableComponent {
+    - wrappee: DisplayableComponent
+    + CellViewDecorator(DisplayableComponent wrappee)
+    + void display(Graphics g)
+}
+CellViewDecorator *--> DisplayableComponent
+note right of CellViewDecorator
+    Base decorator
+    void display(Graphics g)
+    {
+        wrappee.display(g)
+        // add decoration to display ...
+    }
+end note
+
+class RobotView implements CellViewDecorator
+class FogView implements CellViewDecorator
+class ShockwaveView implements CellViewDecorator
+
+@enduml

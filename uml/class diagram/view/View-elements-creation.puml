@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram'
+
+package model {
+    class Sequencer {
+        +setupSubscription(ModelSubscriber)
+    }
+    class InterMediator {
+        +setupSubscription(ModelSubscriber)
+    }
+
+    class PLanet
+
+    class Cell implements ModelPublisher
+    class Robot implements ModelPublisher
+    class Shockwave implements ModelPublisher
+
+    InterMediator <----* Sequencer
+
+    InterMediator *--> PLanet
+    InterMediator *--> Robot
+    InterMediator *--> Shockwave
+
+    PLanet *--> Cell
+}
+
+package view {
+    interface DisplayableComponent {
+        + void display(Graphics g)
+    }
+}
+
+package presenter {
+    abstract class ModelSubscriber {
+        +update(ModelPublisher)
+    }
+
+    class SimulationPresenter extends ModelSubscriber
+
+    ModelSubscriber *-> DisplayableComponent
+    SimulationPresenter *-> Sequencer
+}
+
+@enduml

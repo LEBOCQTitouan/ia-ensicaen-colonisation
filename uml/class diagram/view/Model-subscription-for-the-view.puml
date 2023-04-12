@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+package model {
+    interface ModelPublisher {
+        +addSubscriber(ModelSubscriber)
+        +removeSubscriber(ModelSubscriber)
+        +notifySubscribers()
+    }
+    class Cell implements ModelPublisher
+    class Robot implements ModelPublisher
+    class Shockwave implements ModelPublisher
+}
+
+package view {
+    interface DisplayableComponent
+}
+
+package presenter {
+    abstract class ModelSubscriber {
+        +mapModelToView : HashMap<ModelPublisher, List<DisplayableComponent>>
+        +update(ModelPublisher)
+    }
+
+    class SimulationPresenter extends ModelSubscriber
+
+    Cell *--> ModelSubscriber : subscribers
+    Robot *--> ModelSubscriber : subscribers
+    Shockwave *--> ModelSubscriber : subscribers
+
+    ModelSubscriber ..> DisplayableComponent
+}
+
+@enduml
