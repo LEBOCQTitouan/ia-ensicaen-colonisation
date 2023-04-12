@@ -2,23 +2,46 @@
 'https://plantuml.com/class-diagram
 
 class InterMediator
-
 class Planet
 class Cell {
+    + HashMap<Direction, Cell> neighbors
     + putWaterpipe(): void
     + hasPipe(): boolean
 }
 
-class WaterpipeMapper {
-    + robotCoordinateHashMap: HashMap<Cell, Waterpipe>
-}
 class Waterpipe
 
-Planet *--> Cell : List[List[Cell]]
-WaterpipeMapper *--> Waterpipe
-Cell o-> WaterpipeMapper
+
+enum Direction {
+    NORTH,
+    NORTH_EAST,
+    NORTH_WEST,
+    SOUTH,
+    SOUTH_EAST,
+    SOUTH_WEST,
+    EAST,
+    WEST
+
+    + int offsetx
+    + int offsety
+}
+note bottom of Direction
+    NORTH(0, -1)
+    NORTH_EAST(1, -1)
+    NORTH_WEST(-1, -1)
+    SOUTH(0, 1)
+    SOUTH_EAST(1, 1)
+    SOUTH_WEST(-1, 1)
+    EAST(1, 0)
+    WEST(-1, 0)
+end note
+
+Direction <. Cell
 
 InterMediator *--> Planet
-InterMediator *--> WaterpipeMapper
+Waterpipe --> Cell : cell
+Cell --> Waterpipe : waterpipe
+Planet *-> Cell : List[List[Cell]]
+
 
 @enduml
