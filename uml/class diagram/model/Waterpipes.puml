@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class InterMediator
+
+class Planet
+class Cell {
+    + putWaterpipe(): void
+    + hasPipe(): boolean
+}
+
+class WaterpipeMapper {
+    + robotCoordinateHashMap: HashMap<Cell, Waterpipe>
+}
+class Waterpipe
+
+Planet *--> Cell : List[List[Cell]]
+WaterpipeMapper *--> Waterpipe
+Cell o-> WaterpipeMapper
+
+InterMediator *--> Planet
+InterMediator *--> WaterpipeMapper
+
+@enduml

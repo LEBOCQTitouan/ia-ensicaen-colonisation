@@ -1,19 +1,24 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-Class Coordinate {}
-Class Robot {}
-Class RobotMapper {
+class Coordinate {}
+class Robot {}
+class RobotMapper {
     + robotCoordinateHashMap: HashMap<Robot, Coordinate>
     + getCoordinate(robot: Robot): Coordinate
 }
+class InterMediator
+
+InterMediator --> RobotMapper
+InterMediator -> "0..*" Robot
+InterMediator --> Planet
 
 RobotMapper --> Robot
 RobotMapper --> Coordinate
 
-Class Planet {}
-Class Cell {}
+class Planet {}
+class Cell {}
 
-Planet *-- "0..*" Cell : List[List[Cell]]
+Planet *--> "0..*" Cell : List[List[Cell]]
 
 @enduml
