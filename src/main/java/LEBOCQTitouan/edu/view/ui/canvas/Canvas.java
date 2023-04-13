@@ -1,4 +1,4 @@
-package LEBOCQTitouan.edu.view.ui;
+package LEBOCQTitouan.edu.view.ui.canvas;
 
 import javax.swing.*;
 

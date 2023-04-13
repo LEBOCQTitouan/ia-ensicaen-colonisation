@@ -2,7 +2,7 @@ package LEBOCQTitouan.edu.view;
 
 import LEBOCQTitouan.edu.model.score.Metric;
 import LEBOCQTitouan.edu.presenter.SimulationPresenter;
-import LEBOCQTitouan.edu.view.ui.Canvas;
+import LEBOCQTitouan.edu.view.ui.canvas.Canvas;
 import LEBOCQTitouan.edu.view.ui.StatHolder;
 
 import javax.swing.*;
