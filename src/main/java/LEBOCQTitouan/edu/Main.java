@@ -32,6 +32,10 @@ public class Main {
         // TODO init ore extractors
         // TODO init food retrievers
         // TODO init pipeline builders
+
+        // TODO remove next line
+        robots.add(new Robot());
+
         return robots;
     }
 }
