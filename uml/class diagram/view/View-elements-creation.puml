@@ -35,7 +35,9 @@ package presenter {
         +update(ModelPublisher)
     }
 
-    class SimulationPresenter extends ModelSubscriber
+    class SimulationPresenter extends ModelSubscriber {
+        +createDisplayableComponents(ModelPublisher)
+    }
 
     ModelSubscriber *-> DisplayableComponent
     SimulationPresenter *-> Sequencer

@@ -1,0 +1,34 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant Main
+
+create Planet
+Main -> Planet : new
+Main <-- Planet : Planet
+
+collections Robot
+create Robot
+loop every Robots
+    Main -> Robot
+    Main <-- Robot
+end
+
+create Sequencer
+Main -> Sequencer : new
+Main <-- Sequencer : Sequencer
+
+create AppWindow
+Main -> AppWindow : new
+Main <-- AppWindow : AppWindow
+
+create SimulationPresenter
+Main -> SimulationPresenter : new
+Main <-- SimulationPresenter : SimulationPresenter
+
+Main -> SimulationPresenter : start
+Main <-- SimulationPresenter : void
+
+@enduml

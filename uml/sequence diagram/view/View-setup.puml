@@ -1,0 +1,37 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+participant SimulationPresenter
+participant Sequencer
+participant InterMediator
+
+participant Planet
+collections Cell
+
+collections DisplayableComponent
+
+SimulationPresenter -> Sequencer ++ : setupSubscription(this)
+Sequencer -> InterMediator ++ : setupSubscription(SimulationPresenter)
+InterMediator -> Planet ++ : getCells()
+InterMediator <-- Planet --
+loop for each cell
+    InterMediator --> Cell
+    InterMediator <-- Cell
+    InterMediator -> SimulationPresenter ++ : createDisplayableComponent(Cell)
+    create DisplayableComponent
+    SimulationPresenter -> DisplayableComponent : new
+    SimulationPresenter <-- DisplayableComponent
+    SimulationPresenter -> SimulationPresenter ++ : Setup hashmap ModelPublisher to DisplayableComponent
+    SimulationPresenter --> SimulationPresenter --
+    InterMediator <-- SimulationPresenter
+    InterMediator -> Cell ++ : addSubscriber(SimulationPresenter)
+    Cell -> Cell ++ : add addSubscriber
+    Cell <-- Cell --
+    InterMediator <-- Cell
+end loop
+Sequencer <-- InterMediator --
+SimulationPresenter <-- Sequencer --
+
+@enduml
