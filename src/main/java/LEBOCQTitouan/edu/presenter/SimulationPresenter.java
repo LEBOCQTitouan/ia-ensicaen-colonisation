@@ -4,7 +4,7 @@ import LEBOCQTitouan.edu.model.drivers.Sequencer;
 import LEBOCQTitouan.edu.model.score.SimulationMetricManager;
 import LEBOCQTitouan.edu.view.AppWindow;
 
-public class SimulationPresenter {
+public class SimulationPresenter extends ModelSubscriber {
     private final AppWindow appWindow;
     private final Sequencer sequencer;
 
